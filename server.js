@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs  = require('fs');
+const port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use((req, res, next) => {
 // 	res.render('maintainence.hbs');
 // });
 
-// we moved this from top to here so that this is not rendered when the maintance.hbs is used
+// we moved this from top to here so that this is not rendered when the maintance.hbs is
 app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getCurrentYear', () => {
@@ -66,6 +67,6 @@ app.get('/bad', (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log('Sever is up and running at 3000')
+app.listen(port, () => {
+	console.log(`Sever is up and running at ${port}`);
 });
